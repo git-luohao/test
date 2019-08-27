@@ -1,0 +1,246 @@
+常用:
+ifconfig :查看IP
+pwd  :显示当前目录
+cd :进入到指定目录
+/ :代表最根目录
+.. :上级目录
+ls :显示当前目录下的文件与文件夹名字(-al)
+ll :显示当前目录下的文件与文件夹详细信息 (在后面加-al,显示包括隐藏的文件)
+ls -al  :显示包括隐藏文件
+mkdir :创建文件夹
+mkdir -p :一次性创建多级目录
+touch :创建一个空文件
+touch a.txt :创建文件
+echo > 文件名 文件内容	   :创建带有内容的文件(覆盖以前内容),如果文件不存在,随便帮我们创建
+echo >> 文件名 文件内容	   追加内容
+echo 内容 > 文件名  :把内容写进文件中 -- 覆盖
+echo 内容 >> 文件名  :把内容写进文件中(自动新建) -- 追加
+mv 源文件/源文件夹　目标文件/目标文件夹  :移动或重名名
+true > 文件名 : 清空值
+cp 源文件名 目标文件名 :复制文件
+cat 文件名  :显示文件内容
+cat a.txt | grep “内容”| more  (查找包含i686的文本行,将查找到的内容以more分页输出)
+cat a.txt| grep “内容”| less (查找包含i686的文本行,将查找到的内容以less分页输出)(pageup   pagedown）
+more :分页显示文本文件内容(如果有多页面按空格翻页,按q退出)
+less :分页显示文本文件内容(如果有多页面可以按上下键翻页,按q退出)
+grep  :在文本中查找某个字符串
+head,tail :显示文件头,尾内容(显示开头/最后10行)
+rm :删除文件
+rm -r  :删除文件与文件夹
+rm -rf :强制删除,不需要确认(可以通过通配符进行删除)
+
+
+
+vi/vim 文件名　:编辑文件内容(如果文件不存在，则自动创建)
+  进入vi后．如果想进入文件编辑，需要按a或i键进入编辑　　
+  按esc退出编辑状态
+  :q   不保存并退出(vim,vi:不做任何更改)
+  :wq  保存并退出
+  :wq! 保存并强制退出
+  :q!　不保存并强制退出
+  :set nu/number  显示行号
+  gg 直接跳转到第一行
+  shift + g　直接跳到最后一行
+  :数字　　跳到指定行
+  /内容　查找文件内容位置，按n继续查找下一个
+  快速删除一行,dd
+  clear 清屏　
+  
+ 　df -h　:查看磁盘大小
+   du -h  :查看当前目录下所有的文件大小
+   help   :查看所有命令 
+
+  系统:
+  ctrl+c 彻底终止该进程
+  who  显示在线登录用户
+  whoami 显示当前操作用户
+  hostname 查看当前主机名
+  uname 显示系统信息(-a,-n)显示不同的系统信息
+  
+  
+  
+ 
+   文件权限管理:
+
+  赋权:
+  https://www.cnblogs.com/johnw/p/5499442.html
+  r是读，w是写，x是执行
+
+  RW- 当前所属用户权限(读写) 数值表示为 4+2=6
+  R-  当前所属用户权限(读)   数值表示为4
+  W-  当前所属用户权限(写)   数值表示为2
+  X   可执行 数值表示为1
+
+  chmod 777(权限代码)     :赋权限
+  chmod -R 777(权限代码)　:递归到所有子文件
+  添加文件的写权限: chmod u+w 文件名
+  撤销文件的写权限：chmod u-w 文件名
+  linux下给用户root权限: https://www.cnblogs.com/johnw/p/5499442.html
+  给用户赋权：https://www.cnblogs.com/zdz8207/p/3793246.html
+              https://blog.csdn.net/majishushu/article/details/54619726
+  
+  用户:
+http://blog.csdn.net/u014745194/article/details/70225833
+创建组,用户
+https://www.cnblogs.com/jxhd1/p/6528574.html
+
+useradd 用户名 : 添加用户
+passwd 用户名 : 给用户设密码
+userdel 用户名 : 删除用户
+groupadd 用户组 : 新建用户组
+groupdel 用户组 : 删除用户组
+gpasswd -d 用户名 GROUP : 从组中删除指定用户
+cat /etc/passwd : 查询所有用户
+passwd 用户名 –l : 关闭此用户
+passwd 用户名  :设置密码
+su - 用户名    :切换帐号
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  打包压缩:
+ tar:打包压缩
+ -c 归档文件
+ -x 压缩文件
+ -z gzip压缩文件
+ -j bzip2压缩文件
+ -v 显示压缩或解压缩过程 v(view)
+ -f 使用档名
+
+ 例：
+ jar -xvf /home/fmw_12.1.3.0.0_wls.jar  解压jar包
+ tar -xvf /home/abc.tar /home/abc       只打包，不压缩
+ tar -zxvf /home/abc.tar.gz /home/abc   打包，并用gzip压缩
+ tar -jxvf /home/abc.tar.bz2 /home/abc  打包，并用bzip2压缩
+ unzip 解压zip包
+
+
+
+
+ 重启:
+ ctrl+c 彻底终止该进程
+ -r 关机重启
+ -h 关机不重启
+ now 立刻关机
+ halt 关机
+ reboot 重启
+ top 动态显示当前耗费资源最多进程信息
+
+
+jdk安装		
+1.卸载自带JDK
+	rpm -qa |grep jdk  查看jdk安装包
+	rpm -e java...删除JDK
+	rpm -e --nodeps java... 强制删除JDK
+2.解压JDK
+3.配置环境变量
+  vim /etc/profile
+  找到export,在下面加入
+	export JAVA_HOME=/root/software/jdk1.7.0_79(JDK安装目录)
+	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+	export PATH=$JAVA_HOME/bin:$PATH
+4.使环境变量生效
+  source /etc/profile
+  注:查看环境变量是否生效   echo $JAVA_HOME
+5.使用java -version(java javac)查看JDK是否安装成功
+
+./ :运行sh脚本
+lsof -i:8080  :查看端口是否有进程在运行
+ps -ef | grep tomcat :查看tomcat进程是否在运行
+pkill 进程名  :杀死对应进程
+kill -9 端口号  :杀死端口号对应进程　
+
+# ps -ef | grep nginx(进程名) | grep -v grep | awk '(print $2)' (取值)| xargs kill -9(杀死)
+ 进程名	取第几个值(第二个是pid,一般我们kill 掉的就是 pid)		杀死参数(可以不加,变为查看)
+
+redhat防火墙: systemctl status/stop/start firewalld :防火墙状态 查看/停止/启动
+redhat防火墙: systemctl enable firewalld 永久性关闭/开启防火墙
+centOS6防火墙: service iptables stop/start/status :停止/开启/查看
+centOS7防火墙: systemctl  stop/start/status/  firewalld :停止/开启/查看
+tail (eg: -f)命令　动态显示文件内容／一般用于日志查看
+
+
+
+
+
+
+
+
+
+
+
+find ／(目录)　-name(根据名字)　条件名字　:根据条件查找
+
+
+
+
+
+
+
+
+ssh免密码登录:rsa dsa
+1) 192.168.1.16测试链接192.168.1.18(两边都测试)
+     ssh 192.168.1.18
+     将会要求输入密码
+2) 退出到16电脑(exit)
+3) 执行 ssh-keygen -t rsa命令,会出现几条让你输入的语句,执行回车直到有图形出来
+4) 首先执行ll查看下面是否有文件(和后面的作比较),
+      再执行 cd /root/.ssh/ 会发现出现id_rsa,id_rsa.pub,known_hosts三个文件
+5) 执行 cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys 命令将id_rsa.pub公钥内容写入到authorized_keys文件中
+6) 执行vi authorized_keys查看内容,将18 的authorized_keys文件中的内容复制到16 的authorized_keys文件中
+     (或者将16的authorized_keys文件中的内容复制到181authorized_keys文件中(注意:只需要执行一边))
+7) 在 18 中执行链接 16(ssh 192.168.1.16),会发现不需要输入密码了,再在16中执行ssh 192.168.1.18 会发现还是需要密码
+      是因为18电脑的公钥在16电脑中存在,可以直接链接
+8) 可以使用scp 将本地文件(有另一端密钥的)上传到另一端(只有自己的密钥)去覆盖,或者将没有的密钥复制过来
+
+ssh限制root用户无法登陆:
+    1) 在根目录执行 vim /etc/ssh/sshd_config ,找到permitRootlogin ,将#解开并把yes改成no即拒绝root账号登录(默认root账号可以登录)
+    2) 执行完后重启ssh服务, service sshd restart
+    3) 重新连接生效
+
+ssh ip  连接到指定IP电脑
+ssh 用户@ip地址(eg: zxy@192.168.1.86) : 用指定用户连接指定ip电脑
+ssh -l 用户名 ip : 指定用户名登陆到指定IP
+exit退出连接的电脑	
+
+
+nfs文件挂载 将两台电脑的文件进行共享:
+1) 关闭防火墙,查看是否已关闭
+2) 启动rpcbin与nfs : systemctl status rpcbind nfs (注意一定要先启动rpcbind再启动nfs) -- 这里是一次性将两个都启动(有执行顺序)
+3) 查看启动状态 systemctl is-active rpcbind nfs ,如果是active就代表成功,unknown找不到..
+4) 给挂载文件授权 -=============================================
+   1.-=============================================-=============================================
+
+expor..   文件名 ip地址 (ip/*     *    ip)
+
+
+通过SCP把本地的文件,上传到指定用户的IP电脑上
+scp   本地目录  用户名@IP:/文件路径
+scp -r 本地文件夹  用户名@IP:/路径
+
+通过SCP上指定电脑上下载文件
+scp 用户名@IP:/文件路径  本地目录
+scp -r 用户名@IP:/文件路径夹  本地目录
+
+
+
+linux weblogic密码: weblogic123
+
+--nodeps --force强制安装
